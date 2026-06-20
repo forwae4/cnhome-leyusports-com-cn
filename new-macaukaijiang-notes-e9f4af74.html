@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>新澳门开奖 · 稳定说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f9fc;
+            color: #1a2e3b;
+            line-height: 1.7;
+            padding: 20px 16px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 蓝绿色点缀 */
+        .accent-bg {
+            background: linear-gradient(145deg, #e3f0f5 0%, #cde4ec 100%);
+        }
+
+        .accent-border {
+            border-left: 4px solid #2d8c8c;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1f6e6e;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            text-transform: uppercase;
+        }
+
+        /* 页面头部 */
+        .hero {
+            padding: 32px 20px 28px;
+            background: linear-gradient(135deg, #eaf4f7 0%, #d3e7ee 100%);
+            border-radius: 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(30, 90, 100, 0.06);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #0d4444;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #1f4a55;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .hero .deco {
+            display: inline-block;
+            width: 48px;
+            height: 4px;
+            background: #2d8c8c;
+            border-radius: 6px;
+            margin: 12px auto 18px;
+            opacity: 0.6;
+        }
+
+        /* 网格卡片系统 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin: 24px 0 28px;
+        }
+
+        @media (min-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 20px 22px;
+            box-shadow: 0 6px 14px rgba(40, 100, 110, 0.05);
+            transition: all 0.15s ease;
+            border: 1px solid rgba(45, 140, 140, 0.10);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(45, 140, 140, 0.10);
+            transform: translateY(-2px);
+        }
+
+        .card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            display: block;
+            color: #2d8c8c;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0b3b3b;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            color: #2a4a55;
+            font-size: 0.94rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #e1f0f0;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: #0f5e5e;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* 特色区域 - 带卡片网格 */
+        .feature-block {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 20px 20px;
+            margin: 26px 0;
+            box-shadow: 0 4px 10px rgba(30, 80, 90, 0.04);
+        }
+
+        .feature-block h2 {
+            font-size: 1.4rem;
+            font-weight: 560;
+            color: #094444;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-block .sub {
+            color: #366f7a;
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+        }
+
+        .inline-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .inline-list li {
+            padding: 8px 0 8px 26px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%232d8c8c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
+            background-size: 16px;
+            color: #1f4a55;
+        }
+
+        /* 使用建议与提示 */
+        .tips-box {
+            background: #eef6f8;
+            padding: 24px 22px;
+            border-radius: 28px;
+            margin: 28px 0;
+            border-left: 6px solid #2d8c8c;
+        }
+
+        .tips-box h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #063838;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-box p {
+            margin-bottom: 10px;
+            color: #1d424b;
+        }
+
+        .tips-box .small-note {
+            font-size: 0.85rem;
+            color: #3b6b74;
+            border-top: 1px solid rgba(45, 140, 140, 0.2);
+            padding-top: 14px;
+            margin-top: 6px;
+        }
+
+        /* 访问说明与入口 */
+        .access-note {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 22px 22px;
+            margin: 20px 0 28px;
+            box-shadow: 0 4px 12px rgba(30, 85, 95, 0.03);
+            border: 1px solid #d1e3e8;
+        }
+
+        .access-note h2 {
+            font-size: 1.25rem;
+            font-weight: 570;
+            color: #094444;
+            margin-bottom: 8px;
+        }
+
+        .access-note p {
+            color: #1c4752;
+        }
+
+        .link-holder {
+            background: #e7f2f5;
+            padding: 14px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 8px 0 2px;
+            font-size: 1.05rem;
+        }
+
+        .link-holder a {
+            color: #0a5454;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 2px solid rgba(45, 140, 140, 0.25);
+            transition: border 0.15s;
+        }
+
+        .link-holder a:hover {
+            border-bottom-color: #2d8c8c;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: white;
+            border-radius: 28px;
+            padding: 20px 20px 10px;
+            margin: 24px 0 16px;
+        }
+
+        .faq-mini details {
+            border-bottom: 1px solid #dce9ed;
+            padding: 12px 0;
+        }
+
+        .faq-mini details:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-mini summary {
+            font-weight: 550;
+            color: #094444;
+            cursor: pointer;
+            padding: 4px 0;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini summary::marker {
+            color: #2d8c8c;
+        }
+
+        .faq-mini details p {
+            color: #2c5662;
+            margin: 8px 0 0 12px;
+            font-size: 0.92rem;
+        }
+
+        /* 脚注 */
+        .footer-note {
+            margin-top: 36px;
+            padding: 16px 0 4px;
+            border-top: 1px solid #cbdde3;
+            font-size: 0.8rem;
+            color: #537681;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d3e3e8;
+            margin: 10px 0;
+        }
+
+        /* 小屏微调 */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 标题区 -->
+    <div class="hero">
+        <div class="deco"></div>
+        <h1>新澳门开奖 · 信息入口</h1>
+        <p>一份关于稳定访问与内容说明的温和指南，不渲染不夸饰，只提供清晰路径。</p>
+    </div>
+
+    <!-- 概括卡片：产品说明式摘要 -->
+    <div class="grid-2">
+        <div class="card">
+            <span class="icon">📌</span>
+            <h3>站点定位</h3>
+            <p>聚焦新澳门开奖相关资讯，提供结果呈现与常态更新。页面轻量、直白，适合日常浏览。</p>
+            <span class="tag">摘要</span>
+        </div>
+        <div class="card">
+            <span class="icon">🧭</span>
+            <h3>稳定入口</h3>
+            <p>网址长期维护，结构清晰。建议将 <a href="https://new-macaukaijiang.com">新澳门开奖</a> 添至书签，以便快速回访。</p>
+            <span class="tag">入口</span>
+        </div>
+    </div>
+
+    <!-- 特点卡片 + 场景说明 -->
+    <div class="feature-block">
+        <h2>
+            <span style="color:#2d8c8c;">✦</span> 亮点与使用建议
+        </h2>
+        <div class="sub">几个值得留意的细节，便于你更顺畅地浏览</div>
+        <ul class="inline-list">
+            <li><strong>结果分区展示</strong> – 开奖号码按时间与类别整理，层次分明。</li>
+            <li><strong>适配移动设备</strong> – 页面在手机和平板上同样易读，无需频繁缩放。</li>
+            <li><strong>历史记录归档</strong> – 往期开奖列表可供回溯，适合对照参考。</li>
+            <li><strong>无多余弹窗</strong> – 浏览过程干净，不干扰核心内容。</li>
+        </ul>
+        <div style="margin-top:14px; font-size:0.93rem; color:#1d5d5d; background:#e2f0f2; padding:10px 16px; border-radius:40px;">
+            💡 场景举例：日常查看最新开奖、整理往期走势、或简短分享给有需要的朋友。
+        </div>
+    </div>
+
+    <!-- 使用提示（温和语气） -->
+    <div class="tips-box">
+        <h3>
+            <span style="font-size:1.3rem;">📋</span> 使用说明 · 几点参考
+        </h3>
+        <p>➀ 第一次访问时，可以花一点时间了解页面布局——结果区、导航和辅助信息都按逻辑排列。</p>
+        <p>➁ 如果希望跟踪每日更新，建议在浏览器中直接保存 <strong>新澳门开奖</strong> 页面，而非仅依赖搜索。</p>
+        <p>➂ 页面内容仅供个人参考，请结合自身判断合理使用。</p>
+        <div class="small-note">
+            ⚖️ 本页仅作信息展示，不构成任何形式的引导或保证。请保持理性。
+        </div>
+    </div>
+
+    <!-- 访问说明 + 嵌入链接（自然） -->
+    <div class="access-note">
+        <h2>🔗 关于访问</h2>
+        <p>网址保持长期有效，但网络环境可能存在波动。如遇加载缓慢，可稍后再试或检查本地连接。始终推荐直接从地址栏输入或通过书签进入。</p>
+        <p style="margin:12px 0 6px;">若你尚未收藏，可记下这个地址：</p>
+        <div class="link-holder">
+            <a href="https://new-macaukaijiang.com">新澳门开奖</a>
+        </div>
+        <p style="margin-top:10px; font-size:0.92rem; color:#366f7a;">该链接即为核心入口，无需经由第三方跳转。</p>
+    </div>
+
+    <!-- FAQ 摘要（简洁） -->
+    <div class="faq-mini">
+        <h3 style="font-weight:560; color:#094444; margin-bottom:6px; display:flex; gap:6px;">
+            <span style="color:#2d8c8c;">❓</span> 常见疑问摘要
+        </h3>
+        <details>
+            <summary>页面更新频率如何？</summary>
+            <p>通常保持与开奖节奏同步，特殊情况可能会有延迟，以页面实际显示为准。</p>
+        </details>
+        <details>
+            <summary>移动端和桌面端体验一致吗？</summary>
+            <p>设计上兼顾两端，核心功能一致，细节布局自适应。</p>
+        </details>
+        <details>
+            <summary>是否需要注册或登录？</summary>
+            <p>不需要。所有内容公开可直接查阅，无额外门槛。</p>
+        </details>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>内容说明页 · 方向：产品说明式</span><br>
+        <span style="font-size:0.7rem; opacity:0.7;">稳定入口 · 温和提示 · 仅供参考</span>
+    </div>
+
+</div>
+</body>
+</html>
