@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常查询与知识对照 · 吉祥坊</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(145deg, #fce4d6 0%, #f7d2b5 50%, #f1c5a8 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .card {
+      max-width: 860px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 3rem 2.8rem 3.2rem;
+      box-shadow: 0 18px 36px -8px rgba(160, 90, 50, 0.18), 0 8px 16px -4px rgba(120, 70, 30, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 24px 44px -10px rgba(150, 80, 40, 0.22);
+    }
+    .hero-tagline {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: #b68665;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #3e2c1e;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    h1 span {
+      background: linear-gradient(120deg, #c7875e, #b06d46);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .opener {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #503d2c;
+      background: #faf2eb;
+      padding: 1.2rem 1.6rem;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      border-left: 4px solid #d99e7a;
+    }
+    .intro-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #362b20;
+      margin-bottom: 2rem;
+    }
+    .intro-text a {
+      color: #b8724b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #dbaa8a;
+      transition: border 0.2s, color 0.2s;
+    }
+    .intro-text a:hover {
+      color: #8f5836;
+      border-bottom: 1px solid #b06d46;
+    }
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2.2rem 0 2.4rem;
+    }
+    .feature-item {
+      flex: 1 1 200px;
+      background: #faf6f1;
+      padding: 1.2rem 1rem 1.4rem;
+      border-radius: 28px;
+      transition: background 0.2s, transform 0.2s;
+      border: 1px solid #efe0d4;
+    }
+    .feature-item:hover {
+      background: #f5ebe3;
+      transform: translateY(-3px);
+    }
+    .feature-item .emoji-badge {
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .feature-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #3b2b1d;
+      margin-bottom: 0.35rem;
+    }
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #5e4a38;
+      line-height: 1.5;
+    }
+    .bridge-paragraph {
+      background: #fff7f1;
+      padding: 1.2rem 1.8rem;
+      border-radius: 32px;
+      margin: 1.8rem 0 2rem;
+      font-style: normal;
+      color: #3f3327;
+      line-height: 1.7;
+      font-size: 1rem;
+      border: 1px solid #eddccc;
+    }
+    .bridge-paragraph strong {
+      color: #9f6d4c;
+    }
+    .faq-mini {
+      margin-bottom: 2.2rem;
+      padding: 0.2rem 0;
+    }
+    .faq-mini summary {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #4d3a29;
+      cursor: pointer;
+      padding: 0.6rem 0.4rem;
+      border-radius: 12px;
+      transition: background 0.15s;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-mini summary::before {
+      content: "▸ ";
+      color: #b27a58;
+      font-size: 1.2rem;
+      margin-right: 6px;
+      transition: transform 0.2s;
+    }
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .faq-mini summary:hover {
+      background: #f1e5db;
+    }
+    .faq-mini p {
+      margin: 0.5rem 0 0.8rem 1.6rem;
+      color: #4d3b2b;
+      line-height: 1.6;
+      padding: 0.3rem 0.8rem;
+      border-left: 3px solid #d9af93;
+    }
+    .closing-note {
+      border-top: 1px solid #e7d5c6;
+      padding-top: 1.5rem;
+      margin-top: 0.6rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #6b5542;
+      line-height: 1.6;
+    }
+    .closing-note a {
+      color: #a5704b;
+      text-decoration: none;
+      font-weight: 500;
+      background: #f4e6dc;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .closing-note a:hover {
+      background: #e3cfc0;
+      color: #6f462d;
+    }
+    .footnote {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #8e7b6b;
+    }
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .features-grid {
+        flex-direction: column;
+      }
+      .feature-item {
+        flex: 1 1 auto;
+      }
+      .opener {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero-tagline">✦ 信息对照 · 日常延伸</div>
+    <h1>如何从查询中<span>构建参照</span></h1>
+
+    <div class="opener">
+      遇到一个陌生的名称、一条模糊的线索，很多人第一反应是打开搜索栏。但查询之后呢？<br>
+      把散落的信息排列、对比、溯源——这才是延伸阅读的开始。
+    </div>
+
+    <div class="intro-text">
+      前些日子整理书签时，偶然翻到一条关于 <a href="https://page-wellbet.com">吉祥坊</a> 的笔记。起初只是随手保存，后来在几次对照阅读里反复用到它：不同页面的描述有出入，同一功能的叫法也时常变化。于是慢慢养成了一个习惯——对任何一个平台或概念，都先做三件事：<strong>搜集原始页面、列出关键特点、再交叉验证</strong>。以 <a href="https://page-wellbet.com">吉祥坊</a> 为例，它的首页结构、模块分区和导航逻辑，本身就像一份信息组织的样本。
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item">
+        <span class="emoji-badge">🔍</span>
+        <h3>结构比照</h3>
+        <p>把不同入口的栏目分类并列，快速发现功能侧重与信息层级差异。</p>
+      </div>
+      <div class="feature-item">
+        <span class="emoji-badge">📋</span>
+        <h3>术语归纳</h3>
+        <p>同一个概念在不同位置出现不同说法时，建立自己的对照表。</p>
+      </div>
+      <div class="feature-item">
+        <span class="emoji-badge">🧩</span>
+        <h3>来源标记</h3>
+        <p>每次引用都记下页面标题和访问时间，减少二次核查的偏移。</p>
+      </div>
+    </div>
+
+    <div class="bridge-paragraph">
+      <strong>一个常见场景</strong> —— 和同事讨论某个模块的分类逻辑，双方各执一词。打开 <a href="https://page-wellbet.com">吉祥坊</a> 的页面，逐区域截图、标注，再拉出一份简单的功能对照清单。十分钟后，分歧变成了一张可以继续修改的表格。很多看似模糊的细节，其实只差一次并列对照。
+    </div>
+
+    <div class="faq-mini">
+      <details>
+        <summary>FAQ 摘要：如何避免信息碎片化？</summary>
+        <p>不依赖单一页面。至少取两个不同来源（官网、帮助中心、第三方说明），把相同条目并排放置，不一致的地方就是需要深挖的点。比如 <a href="https://page-wellbet.com">吉祥坊</a> 的某个功能描述，在首页和子页面有时详略不同，记录下来就是一份很好的比对笔记。</p>
+      </details>
+      <details>
+        <summary>延伸阅读的起点是什么？</summary>
+        <p>一个实实在在的页面。用浏览器的“页面另存为”或截图工具保留原始样貌，然后开始拆解标题、段落、列表。没有原始材料，对照就失去了基准。从 <a href="https://page-wellbet.com">吉祥坊</a> 这样的具体地址开始，再向帮助文档、更新日志扩散。</p>
+      </details>
+    </div>
+
+    <div class="closing-note">
+      查询只是第一步，把结果变成可复用的参照体系，才是日常积累的扎实做法。<br>
+      如果你也需要一个稳定的信息锚点，不妨从 <a href="https://page-wellbet.com">吉祥坊</a> 开始建立自己的对照习惯。
+      <div class="footnote">
+        — 页面内容仅供知识参考，无诱导或承诺 —
+      </div>
+    </div>
+  </div>
+</body>
+</html>
