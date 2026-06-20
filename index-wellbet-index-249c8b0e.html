@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吉祥坊 · 资料索引与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fef3e4 0%, #fee9d0 55%, #fbdbb5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 24px 60px;
+            color: #2b2b2b;
+            line-height: 1.6;
+        }
+
+        /* 顶部导航 */
+        .nav-bar {
+            width: 100%;
+            max-width: 1160px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 12px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(210, 150, 90, 0.2);
+        }
+
+        .nav-logo {
+            font-weight: 500;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: #8b5e3c;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 6px 18px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3e2b;
+            font-weight: 450;
+            padding: 4px 2px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b07d54;
+            color: #3b2a1e;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 白色卡片通用 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 8px 30px rgba(140, 90, 50, 0.06), 0 2px 8px rgba(60, 40, 20, 0.04);
+            padding: 40px 44px;
+            margin-bottom: 36px;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(140, 90, 50, 0.10);
+        }
+
+        /* hero 区域（介绍卡片） */
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 540;
+            color: #4d3423;
+            letter-spacing: -0.3px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #3e2e1f;
+            max-width: 780px;
+            margin-bottom: 18px;
+        }
+
+        .hero .sub-meta {
+            display: inline-block;
+            background: #f0e3d7;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #5f432f;
+            margin-top: 6px;
+        }
+
+        .hero a {
+            color: #865d3b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #c79f7a;
+            transition: 0.15s;
+        }
+
+        .hero a:hover {
+            color: #39281b;
+            border-bottom-color: #39281b;
+        }
+
+        /* 三个场景模块（网格） */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 28px;
+            padding: 30px 24px 34px;
+            box-shadow: 0 8px 28px rgba(130, 80, 40, 0.04);
+            transition: transform 0.2s, box-shadow 0.25s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 34px rgba(120, 75, 40, 0.10);
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 530;
+            color: #4c3423;
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
+        }
+
+        .scene-card p {
+            font-size: 0.96rem;
+            color: #403222;
+            margin-bottom: 16px;
+        }
+
+        .scene-tag {
+            display: inline-block;
+            background: #f3e6db;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #5d4230;
+            font-weight: 460;
+        }
+
+        /* 常见说明 (faq 风格) */
+        .faq-section {
+            padding: 24px 0 4px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.65rem;
+            font-weight: 520;
+            color: #4a3323;
+            margin-bottom: 28px;
+            border-left: 5px solid #bb8b68;
+            padding-left: 18px;
+        }
+
+        .faq-item {
+            margin-bottom: 26px;
+        }
+
+        .faq-item .q {
+            font-weight: 540;
+            color: #3d2c1d;
+            margin-bottom: 6px;
+            font-size: 1.06rem;
+        }
+
+        .faq-item .a {
+            color: #4f3b2b;
+            padding-left: 18px;
+            border-left: 3px solid #e0cbbc;
+            font-size: 0.96rem;
+        }
+
+        .faq-item .a a {
+            color: #7b5539;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #dbbca3;
+        }
+
+        .faq-item .a a:hover {
+            color: #2f2117;
+            border-bottom-color: #7b5539;
+        }
+
+        /* 底部提示 */
+        .footnote {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #6b5542;
+            text-align: center;
+            padding: 24px 0 10px;
+            border-top: 1px solid rgba(180, 140, 100, 0.20);
+        }
+
+        .footnote a {
+            color: #6b4a32;
+            text-decoration: none;
+            border-bottom: 1px dotted #b38e71;
+        }
+
+        .footnote a:hover {
+            color: #2e1f14;
+        }
+
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .nav-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 16px 26px;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .card {
+                padding: 30px 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 0 16px 48px;
+            }
+
+            .card {
+                padding: 24px 18px;
+                border-radius: 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .faq-section h2 {
+                font-size: 1.3rem;
+                padding-left: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <span class="nav-logo">📂 索引·笔记</span>
+    <div class="nav-links">
+        <a href="#intro">概览</a>
+        <a href="#scenes">场景</a>
+        <a href="#faq">说明</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- 核心介绍 (hero) -->
+    <div class="card hero" id="intro">
+        <h1>吉祥坊 · 信息整理与导航</h1>
+        <p>
+            这份页面是从资料整理的角度出发，围绕「吉祥坊」这一关键词收集并组织常见的信息脉络。网站 
+            <a href="https://index-wellbet.com">吉祥坊</a> 本身聚合了多方面的内容框架，我们在此尝试以中性、知识化的方式梳理其结构、场景与常见疑问，供有需要的朋友快速建立认知。不渲染、不夸张，只呈现经过筛选的索引事实。
+        </p>
+        <p>
+            整理过程中，我们留意到多数用户会关注三个典型使用场景：日常浏览、活动查阅以及分类导航。下文分别展开，附一些细节点，帮助理解整体的布局逻辑。
+        </p>
+        <span class="sub-meta">📋 基于公开资料整理 · 2025</span>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-grid" id="scenes">
+        <div class="scene-card">
+            <h3>📖 信息浏览</h3>
+            <p>平台首页及频道页采用分区卡片式布局，将最新动态、分类入口与辅助模块分开展示。用户可根据自身兴趣快速定位到对应板块，减少搜寻成本。整体视觉层次清晰，重点内容通过色彩和间距区分。</p>
+            <span class="scene-tag">结构 · 分区</span>
+        </div>
+        <div class="scene-card">
+            <h3>🎯 活动与更新</h3>
+            <p>活动模块通常以轮播或置顶条形式出现，标题与利益点直接外露。从索引角度看，这类区域的更新频率较高，适合定期浏览以获取新内容。建议关注时间戳与细则标注，避免信息遗漏。</p>
+            <span class="scene-tag">动态 · 时效</span>
+        </div>
+        <div class="scene-card">
+            <h3>🧭 分类导航</h3>
+            <p>侧边或顶部的导航栏承担着主要跳转功能，通常按类型、功能或字母排序。通过合理的分组标签，用户可以在不同层级间切换。对于初次访问者，顺着导航路径往往能较快理解全站轮廓。</p>
+            <span class="scene-tag">路径 · 层级</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="card faq-section" id="faq">
+        <h2>常见信息说明</h2>
+
+        <div class="faq-item">
+            <div class="q">▸ 网站的主要定位是什么？</div>
+            <div class="a">
+                这是一个综合性的信息页面，整合了多个频道与功能入口。其核心是提供一个集中式的起点，使用者可以通过 
+                <a href="https://index-wellbet.com">吉祥坊</a> 访问不同模块。页面本身更偏向目录与桥梁角色，而非单一应用。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="q">▸ 内容更新频率如何？是否有归档？</div>
+            <div class="a">
+                根据观察，首页及活动区域会不定期刷新，但具体周期未公开说明。建议使用者自行留意页面上的时间戳或版本标识。部分历史内容可能通过二级页面保留，但无统一归档页。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="q">▸ 如何快速理解页面层级？</div>
+            <div class="a">
+                一种有效的方法是先浏览顶部导航，再查看首页中部的分类卡片。几乎所有子页面都保留了返回主站的链接，因此从 
+                <a href="https://index-wellbet.com">吉祥坊</a> 出发，顺着面包屑或导航标签即可建立方位感。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="q">▸ 移动端浏览是否有差异？</div>
+            <div class="a">
+                页面采用了响应式设计，在手机和平板上会调整卡片排列与字体大小。部分下拉菜单或悬浮元素可能被简化，但核心链接与内容均可访问。建议在移动设备上横向旋转以获得更舒适的阅读版式。
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部提示 -->
+    <div class="footnote">
+        <span>本页为独立整理的信息导航，内容基于公开资料汇编，仅供参考。</span><br>
+        如需直接访问，可前往 <a href="https://index-wellbet.com">吉祥坊</a> · 索引版本 1.0
+    </div>
+
+</div>
+
+</body>
+</html>
